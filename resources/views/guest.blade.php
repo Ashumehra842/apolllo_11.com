@@ -15,7 +15,7 @@
                     @endif
 
                           <div class="alert alert-success" role="alert">
-                           <p>You are login in as user</p>
+                           <p>You are login in as Admin's</p>
                         </div>  
 
                     You are logged in!

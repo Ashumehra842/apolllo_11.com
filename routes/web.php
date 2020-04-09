@@ -11,13 +11,39 @@
 |
 */
 
+
+
+
+
+Route::get('/myfun', 'HomeController@myfun');
+Route::get('/test', 'HomeController@test')->name('test');
+Route::post('save-test', 'HomeController@savetest')->name('save-test');
+Route::post('new-image', 'HomeController@store')->name('new-image');
+
+
+
+Auth::routes();
+
+Route::group(['middleware'=>['web','auth']],function(){
+	
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', 'HomeController@test')->name('test');
-Route::post('save-test', 'HomeController@savetest')->name('save-test');
-Route::post('new-image', 'HomeController@store')->name('new-image');
+Route::get('/home',function(){
+	
+		if(Auth::user()->is_admin==0){
+			return view('home');
+		}else{
+			// dd('ss');
+			$users['users'] = \App\User::all();
+			return view('guest',$users);
+		}
+	});
+
+
+
+});
+Route::resource('ashu','AshuController');
+Route::resource('person','PersonController');

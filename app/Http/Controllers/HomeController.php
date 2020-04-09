@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use App\Event\UserCreated;
 class HomeController extends Controller
 {
     /**
@@ -29,6 +30,11 @@ class HomeController extends Controller
     public function test()
     {
         return view('test');
+    }
+
+    public function myfun(){
+        $email = 'ashumehra768@outlook.com';
+        event(new UserCreated($email));
     }
 
     public function savetest(Request $request)
