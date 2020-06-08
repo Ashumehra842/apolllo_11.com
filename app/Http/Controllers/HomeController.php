@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Event\UserCreated;
+use App\Event\TestEvent;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         return view('home');
     }
 
@@ -35,6 +37,11 @@ class HomeController extends Controller
     public function myfun(){
         $email = 'ashumehra768@outlook.com';
         event(new UserCreated($email));
+    }
+
+    public function test12(){
+        $var = "this is my test function for testing events";
+        event(new TestEvent(ucwords($var)));
     }
 
     public function savetest(Request $request)

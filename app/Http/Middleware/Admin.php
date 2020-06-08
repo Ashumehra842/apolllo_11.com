@@ -16,9 +16,9 @@ class Admin
     {
         
 
-       if(auth()->check() && $request->user()->is_admin == 0){
-          return  redirect()->guest('home');
-       }
+        if(auth()->check() && $request->user()->is_admin == 0){
+           return  redirect()->guest('home');
+        }
         return $next($request);
     }
 }

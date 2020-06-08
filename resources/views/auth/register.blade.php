@@ -66,6 +66,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                
+                                <a href="{{ url('login/google') }}" class="btn btn-success">
+                                   {{ __('Signup With Goggle') }}
+                                </a>
                             </div>
                         </div>
                     </form>
